@@ -19,4 +19,5 @@ public :
 TEST_F(BaseballTestfixture, ThrowExceptionWhenInvalidCase) {
 	assertIllegalArgument("12");
 	assertIllegalArgument("12s");
+	assertIllegalArgument("121");
 }
