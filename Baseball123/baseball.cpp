@@ -10,14 +10,16 @@ struct GuessResult {
 
 class BaseBall {
 public :
-	explicit BaseBall(const string& guessNumber) 
+	explicit BaseBall(const string& question)
 		: question(question) {
 
 	}
 
 	GuessResult guess(const string& guessNumber) {
 		assertIllegalArgument(guessNumber);
-		return { true, 3, 0 };
+		if (guessNumber == question)
+			return { true, 3, 0 };
+		return { false, 0, 0 };
 	}
 
 	void assertIllegalArgument(const string& guessNumber) {
