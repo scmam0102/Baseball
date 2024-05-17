@@ -6,3 +6,8 @@ TEST(BaseballGame, ThrowExceptionWithInputLengthIsUnmatched) {
 	BaseBall game;
 	EXPECT_THROW(game.guess(string("12")), length_error);
 }
+
+TEST(BaseballGame, ThrowExceptionWhenInvalidChar) {
+	BaseBall game;
+	EXPECT_THROW(game.guess(string("12s")), invalid_argument);
+}
