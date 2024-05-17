@@ -17,9 +17,8 @@ public :
 
 	GuessResult guess(const string& guessNumber) {
 		assertIllegalArgument(guessNumber);
-		if (guessNumber == question)
-			return { true, 3, 0 };
-		return { false, 0, 0 };
+		if (guessNumber == question) return { true, 3, 0 };
+		return checkStrikeAndBall(guessNumber);
 	}
 
 	void assertIllegalArgument(const string& guessNumber) {
@@ -41,6 +40,23 @@ public :
 			guessNumber[1] == guessNumber[3])
 			return true;
 		return false;
+	}
+
+	GuessResult checkStrikeAndBall(const string& guessNumber) {
+		int strike = 0;
+		int ball = 0;
+
+		for (int i = 0; i <= 2; i++) {
+			for (int j = 0; j <= 2; j++) {
+				if (question[i] == guessNumber[j]) {
+					if (i == j)
+						++strike;
+					else
+						++ball;
+				}
+			}
+		}
+		return { false, strike, ball };
 	}
 
 private:

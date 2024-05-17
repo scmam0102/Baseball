@@ -24,8 +24,21 @@ TEST_F(BaseballTestfixture, ThrowExceptionWhenInvalidCase) {
 
 TEST_F(BaseballTestfixture, RetrunSolvedResultIfMatchedNumber) {
 	GuessResult result = game.guess("123");
-
 	EXPECT_TRUE(result.solved);
 	EXPECT_EQ(3, result.strikes);
 	EXPECT_EQ(0, result.balls);
+}
+
+TEST_F(BaseballTestfixture, Retrun2StrikesAnd0Ball) {
+	GuessResult result = game.guess("125");
+	EXPECT_FALSE(result.solved);
+	EXPECT_EQ(2, result.strikes);
+	EXPECT_EQ(0, result.balls);
+}
+
+TEST_F(BaseballTestfixture, Retrun1StrikesAnd2Ball) {
+	GuessResult result = game.guess("321");
+	EXPECT_FALSE(result.solved);
+	EXPECT_EQ(1, result.strikes);
+	EXPECT_EQ(2, result.balls);
 }
