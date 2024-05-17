@@ -2,11 +2,22 @@
 #include <stdexcept>
 using namespace std;
 
+struct GuessResult {
+	bool solved;
+	int strikes;
+	int balls;
+};
+
 class BaseBall {
 public :
-	void guess(const string& guessNumber) {
+	explicit BaseBall(const string& guessNumber) 
+		: question(question) {
+
+	}
+
+	GuessResult guess(const string& guessNumber) {
 		assertIllegalArgument(guessNumber);
-			throw invalid_argument("Must not have the same number");
+		return { true, 3, 0 };
 	}
 
 	void assertIllegalArgument(const string& guessNumber) {
@@ -29,4 +40,7 @@ public :
 			return true;
 		return false;
 	}
+
+private:
+	string question;
 };
