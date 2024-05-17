@@ -4,7 +4,8 @@ using namespace std;
 
 class BaseBall {
 public :
-	void guess(string str) {
-		throw length_error("Must be three letters");
+	void guess(const string& str) {
+		if (str.length() != 3)
+			throw length_error("Must be three letters");
 	}
 };
